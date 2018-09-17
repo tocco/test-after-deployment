@@ -37,6 +37,24 @@ During development, you may want to keep Cypress open and don't just run all the
 yarn run cy:open
 ```
 
+### Docker
+
+You can create a docker image to run the test in the CI server.
+
+Build the image:
+```
+docker build -t test-after-depl .
+```
+
+Run the tests:
+```
+docker run \
+ -e "cypress_host=${NICE_INSTALLATION_HOST}" \
+ -e "cypress_username=${USERNAME}" \
+ -e "cypress_password=${PASSWORD}" \
+ test-after-depl
+```
+
 ## Tested application functions:
 * Login
 * Open a module (first module under `address` module group)
