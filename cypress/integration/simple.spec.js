@@ -15,7 +15,9 @@ context('Test', () => {
     }
 
     const runTest = () => {
-        cy.get('[ext\\:tree-node-id=address] + ul > li:first-child').click()
+        cy.get('.x-tool-down').click()
+
+        cy.get('[ext\\:tree-node-id=address] + ul > li:first-child').contains('Person').click()
 
         cy.get(`${firstTab} .x-grid3-col-numberer:first-child`).contains('1')
 
@@ -23,14 +25,14 @@ context('Test', () => {
 
         cy.contains('Ausgabe').click()
 
-        cy.get('.x-menu-floating > ul > li:first-child').click()
+        cy.get('.x-menu-floating > ul > li:first-child').contains('Telefonliste').click()
 
         cy.contains('Generieren (1)').click()
 
         cy.get('div.relOutput_job_type-value').contains('Manuell')
     }
 
-    it('should work', () => {
+    it('should generate Telefonliste report for first person', () => {
         cy.getCookie('nice_auth').then(cookie => {
             if (!cookie) {
                 login()

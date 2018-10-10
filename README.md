@@ -57,9 +57,16 @@ docker run \
 
 ## Tested application functions:
 * Login
-* Open a module (first module under `address` module group)
+* Open `person` module (first module under `address` module group)
 * Check if there's some data (wait for first record to appear)
-* Generate a report for the first record (simply select the first record in the menu)
+* Generate `Telefonliste` report for the first record (`Telefonliste` has to be the first report in the menu)
+
+## Prerequisites and assumptions
+* The `person` module has to be the first module in the `address` module group
+* The `Telefonliste` report has to be the first report in the menu
+* The configured login must exist on the configured installation
+* The interface language of the login must be german
+* The login requires at least the role `userguest` to be allowed to test the functionality described above
 
 ## Known issues
 
