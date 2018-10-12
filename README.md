@@ -59,11 +59,12 @@ docker run \
 * Login
 * Open `person` module (first module under `address` module group)
 * Check if there's some data (wait for first record to appear)
-* Generate `Telefonliste` report for the first record (`Telefonliste` has to be the first report in the menu)
+* Generate `Geburtstagsliste` report (Freemarker) for the first record
+* Generate `Mitarbeiterverzeichnis` report (Jasper) for the first record
 
 ## Prerequisites and assumptions
 * The `person` module has to be the first module in the `address` module group
-* The `Telefonliste` report has to be the first report in the menu
+* The reports `Geburtstagsliste` and `Mitarbeiterverzeichnis` report have to be available
 * The configured login must exist on the configured installation
 * The interface language of the login must be german
 * The login requires at least the role `userguest` to be allowed to test the functionality described above
