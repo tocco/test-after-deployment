@@ -23,3 +23,19 @@
 //
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+const login = () => {
+    cy.get('input[name=user]').type(Cypress.env('username'))
+    cy.get('input[name=password]').type(Cypress.env('password'), {
+        log: false
+    })
+    cy.get('button[type=submit]').click()
+}
+
+Cypress.Commands.add("loginUi", () => {
+    cy.getCookie('nice_auth').then(cookie => {
+        if (!cookie) {
+            login()
+        }
+    })
+})
