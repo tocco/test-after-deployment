@@ -1,28 +1,12 @@
-context('Test', () => {
+context('Reports', () => {
 
     const tabHeader = '.x-tab-panel-header ul'
     const firstTab = '.x-tab-panel-body > div:nth-child(2)'
 
     before(() => {
         cy.visit(`https://${Cypress.env('host')}/tocco`)
-        cy.getCookie('nice_auth').then(cookie => {
-            if (!cookie) {
-                login()
-            }
-        })
+        cy.loginUi()
     })
-
-    beforeEach(function () {
-        Cypress.Cookies.preserveOnce('nice_auth')
-    })
-
-    const login = () => {
-        cy.get('input[name=user]').type(Cypress.env('username'))
-        cy.get('input[name=password]').type(Cypress.env('password'), {
-            log: false
-        })
-        cy.get('button[type=submit]').click()
-    }
 
     const generatePersonReport = report => {
         cy.get(tabHeader).contains('Home').click()

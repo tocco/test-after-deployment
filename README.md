@@ -57,17 +57,24 @@ docker run \
 
 ## Tested application functions:
 * Login
-* Open `person` module (first module under `address` module group)
-* Check if there's some data (wait for first record to appear)
-* Generate `Geburtstagsliste` report (Freemarker) for the first record
-* Generate `Mitarbeiterverzeichnis` report (Jasper) for the first record
+* Fulltext search
+  * Search for "Tocco AG Support" in fulltext search field in header bar
+  * Open item that contains "Tocco AG, Support" (should be a User)
+  * Check if User form loads with "Support" as firstname and "Tocco AG" as lastname
+  * Check if default display in panel with open entities is "Tocco AG, Support"
+* Reports
+  * Open `person` module (first module under `address` module group)
+  * Check if there's some data (wait for first record to appear)
+  * Generate `Geburtstagsliste` report (Freemarker) for the first record
+  * Generate `Mitarbeiterverzeichnis` report (Jasper) for the first record
 
 ## Prerequisites and assumptions
 * The `person` module has to be the first module in the `address` module group
 * The reports `Geburtstagsliste` and `Mitarbeiterverzeichnis` report have to be available
 * The configured login must exist on the configured installation
 * The interface language of the login must be german
-* The login requires at least the role `userguest` to be allowed to test the functionality described above
+* The login requires the role `userguest` (**only** this role) to be allowed to test the functionality described above
+* There must exist a User entity called "Tocco AG, Support" (firstname "Support", lastname "Tocco AG")
 
 ## Known issues
 
