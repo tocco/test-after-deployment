@@ -20,6 +20,7 @@ Next create a file called `cypress.env.json` in the root directory with the foll
   "host": "${NICE_INSTALLATION_HOST}", (e.g. "master.tocco.ch")
   "username": "${USERNAME}", (e.g. "tocco")
   "password": "${PASSWORD}" (password for the user declared in username variable)
+  "website": "${WEBSITE}" (URL for the website to check for availability; optional)
 }
 ```
 
@@ -52,6 +53,7 @@ docker run \
  -e "cypress_host=${NICE_INSTALLATION_HOST}" \
  -e "cypress_username=${USERNAME}" \
  -e "cypress_password=${PASSWORD}" \
+ -e "cypress_website=${WEBSITE}" \
  test-after-depl
 ```
 
@@ -67,6 +69,8 @@ docker run \
   * Check if there's some data (wait for first record to appear)
   * Generate `Geburtstagsliste` report (Freemarker) for the first record
   * Generate `Mitarbeiterverzeichnis` report (Jasper) for the first record
+* Website availability
+  * Request the website and check if response status is `200`
 
 ## Prerequisites and assumptions
 * The `person` module has to be the first module in the `address` module group
