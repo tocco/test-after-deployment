@@ -20,7 +20,7 @@ Next create a file called `cypress.env.json` in the root directory with the foll
   "host": "${NICE_INSTALLATION_HOST}", (e.g. "master.tocco.ch")
   "username": "${USERNAME}", (e.g. "tocco")
   "password": "${PASSWORD}" (password for the user declared in username variable)
-  "website": "${WEBSITE}" (URL for the website to check for availability; optional)
+  "website": "${WEBSITE}" (URL for the website to check for availability and for the of the address update flow; optional)
 }
 ```
 
@@ -71,6 +71,16 @@ docker run \
   * Generate `Mitarbeiterverzeichnis` report (Jasper) for the first record
 * Website availability
   * Request the website and check if response status is `200`
+* Address update flow
+  * Open flow on page `/Test/Address-Update-(Cypress)`
+  * Check if firstname on readonly page is "Support" and lastname is "Tocco AG"
+  * Click on edit button
+  * Set date of birth to today
+  * Toggle "publication" checkbox to make sure the form is actually changed
+    and the data can be saved (maybe the date of birth was already the current
+    date before -> submit button wouldn't get enabled in this case)
+  * Click save button
+  * Check if date of birth on readonly page is today
 
 ## Prerequisites and assumptions
 * The `person` module has to be the first module in the `address` module group
@@ -78,7 +88,23 @@ docker run \
 * The configured login must exist on the configured installation
 * The interface language of the login must be german
 * The login requires the role `userguest` (**only** this role) to be allowed to test the functionality described above
-* There must exist a User entity called "Tocco AG, Support" (firstname "Support", lastname "Tocco AG")
+* There must exist a User entity called "Tocco AG, Support" (firstname "Support", lastname "Tocco AG") and the login
+  we use must belong to this User
+* Recommended CMS setup for Address update flow test (Address update flow must be available on the URL
+  `/Test/Address-Update-(Cypress)` for the flow test):
+  * Create a new `content` login role called `Cypress-Test`
+  * Assign this role to the cypress test login and to the `tocco` login
+  * Create a new page called `Test` on the root level of the website domain
+    * Publish status: offline
+    * Visible in navigation: no
+    * Set read permissions so that only the `Cypress-Test` role can read the page
+    * Create a new page called `Address-Update-(Cypress)` below this page
+      * Visible in navigation: no
+      * Set the same read permissions as on the `Test` page (should already be the case if you set the
+        permissions on the `Test` page before you created this page)
+      * Insert the widget `Address update` in this page
+      * **Publish the page `Address-Update-(Cypress)`**
+    
 
 ## Known issues
 
