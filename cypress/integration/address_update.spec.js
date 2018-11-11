@@ -33,9 +33,9 @@ context('Address Update Flow', () => {
                     // toggle checkbox to make sure the form date is changed and the data can be saved
                     cy.get('.publish_detail-item input[type=checkbox]').click()
 
-                    cy.get('.x-panel-footer').contains('Speichern').click()
+                    cy.get('.x-panel:not(.x-hide-display) .x-panel-footer .x-toolbar-left-row .x-toolbar-cell:first-child .x-btn').click()
 
-                    cy.get('div.birthdate-value').contains(dateToday())
+                    cy.get('.AddressUpdate > div > div > .x-panel:not(.x-hide-display) div.birthdate-value').contains(dateToday())
                 } else {
                     cy.log(`Skipping test, page ${url} not found.`)
                 }
