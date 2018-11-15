@@ -44,7 +44,7 @@ You can create a docker image to run the test in the CI server.
 
 Build the image:
 ```
-docker build -t test-after-depl .
+docker build -t test-after-deployment .
 ```
 
 Run the tests:
@@ -54,7 +54,7 @@ docker run \
  -e "cypress_username=${USERNAME}" \
  -e "cypress_password=${PASSWORD}" \
  -e "cypress_website=${WEBSITE}" \
- test-after-depl
+ test-after-deployment
 ```
 
 ## Tested application functions:
