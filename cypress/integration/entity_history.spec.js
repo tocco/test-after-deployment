@@ -3,6 +3,9 @@ context('Entity history', () => {
     const tabHeader = '.x-tab-panel-header ul'
     const firstTab = '.x-tab-panel-body > div:nth-child(2)'
     const secondTab = '.x-tab-panel-body > div:nth-child(3)'
+    const thirdTab = '.x-tab-panel-body > div:nth-child(4)'
+
+    const hasOldHistory = niceVersion => ['2.14', '2.15', '2.16', '2.17', '2.18'].includes(niceVersion)
 
     before(() => {
         cy.visit(`https://${Cypress.env('host')}/tocco`)
@@ -26,6 +29,14 @@ context('Entity history', () => {
         // expect at least 1 history entry and open it
         cy.get(`${secondTab} .x-grid3-col-numberer:first-child`).contains('1').click()
 
-        cy.contains('Versionsdaten')
+        cy.window()
+            .then((win) => {
+                if (hasOldHistory(win.Nice.version)) {
+                    cy.contains('Versionsdaten')
+                } else {
+                    // expect at least 1 snapshot entry
+                    cy.get(`${thirdTab} .x-grid3-col-numberer:first-child`).contains('1')
+                }
+            })
     })
 })
