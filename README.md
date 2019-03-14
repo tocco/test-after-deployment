@@ -81,6 +81,12 @@ docker run \
     date before -> submit button wouldn't get enabled in this case)
   * Click save button
   * Check if date of birth on readonly page is today
+* Entity history
+  * Open `person` module (first module under `address` module group)
+  * Check if there's some data (wait for first record to appear)
+  * Open history on list view
+  * Check if there are some history entries (wait for first record to appear)
+  * Open first entry and check if it can be loaded
 
 ## Prerequisites and assumptions
 * The `person` module has to be the first module in the `address` module group
