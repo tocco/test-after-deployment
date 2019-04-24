@@ -93,7 +93,8 @@ docker run \
 * The reports `Geburtstagsliste` and `Mitarbeiterverzeichnis` report have to be available
 * The configured login must exist on the configured installation
 * The interface language of the login must be german
-* The login requires the role `userguest` (**only** this role) to be allowed to test the functionality described above
+* The login requires the role `userguest` and the content role `Cypress-Test` (and **only** these role)
+  to be allowed to test the functionality described above
 * There must exist a User entity called "Tocco AG, Support" (firstname "Support", lastname "Tocco AG") and the login
   we use must belong to this User
 * Recommended CMS setup for Address update flow test (Address update flow must be available on the URL
