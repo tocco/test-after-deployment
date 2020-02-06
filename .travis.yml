@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - 'stable'
+services:
+  - docker
+script:
+  - yarn run build --release
+  - docker build -t toccoag/test-after-deployment .
+deploy:
+  provider: script
+  script: .travis/docker_push
+  on:
+    branch: master
+    node_js: stable
