@@ -1,5 +1,0 @@
-#!/bin/bash
-set -Eeu
-
-docker login -u "$DOCKER_USERNAME" -p "$DOCKER_TOKEN"
-docker push toccoag/test-after-deployment
