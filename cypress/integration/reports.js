@@ -8,12 +8,12 @@ context('Reports', () => {
         cy.loginUi()
     })
 
-    const generatePersonReport = report => {
+    const generateAddressReport = report => {
         cy.get(tabHeader).contains('Home').click()
 
         cy.get('.x-tool-down').click()
 
-        cy.get('[ext\\:tree-node-id=address] + ul > li:first-child').contains('Person').click()
+        cy.get('[ext\\:tree-node-id=address] + ul > li:nth-child(2)').contains('Adresse').click()
 
         cy.get(`${firstTab} .x-grid3-col-numberer:first-child`).contains('1')
 
@@ -31,11 +31,7 @@ context('Reports', () => {
         cy.get('.x-menu-floating').contains('Alle Reiter schliessen').click()
     }
 
-    it('should generate Geburtstagsliste report (Freemarker) for first person', () => {
-        generatePersonReport('Geburtstagsliste')
-    })
-
-    it('should generate Mitarbeiterverzeichnis report (Jasper) for first person', () => {
-        generatePersonReport('Mitarbeiterverzeichnis')
+    it('should generate Adress-Liste report (Freemarker) for first address', () => {
+        generateAddressReport('Adress-Liste')
     })
 })
