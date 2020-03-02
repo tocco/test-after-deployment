@@ -6,6 +6,7 @@ context('Entity history', () => {
     const thirdTab = '.x-tab-panel-body > div:nth-child(4)'
 
     const hasOldHistory = niceVersion => ['2.14', '2.15', '2.16', '2.17', '2.18'].includes(niceVersion)
+    const isUnsupported = niceVersion => ['2.10', '2.11', '2.12', '2.13'].includes(niceVersion)
 
     before(() => {
         cy.visit(`https://${Cypress.env('host')}/tocco`)
@@ -13,6 +14,11 @@ context('Entity history', () => {
     })
 
     it('should fetch entity history for users', () => {
+        if (cy.window().then((win) => isUnsupported(win.Nice.version))) {
+            cy.log('Skipping test, not supported in this version of Nice.')
+            return
+        }
+
         cy.get(tabHeader).contains('Home').click()
 
         cy.get('.x-tool-down').click()
