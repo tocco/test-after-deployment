@@ -1,5 +1,7 @@
 cypress.env.json
 cypress/videos
 cypress/screenshots
+.vscode
+node_modules
 
 *.log

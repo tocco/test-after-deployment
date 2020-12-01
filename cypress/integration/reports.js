@@ -19,7 +19,7 @@ context('Reports', () => {
 
         cy.get(`${firstTab} .x-grid3-row-checker`).first().click()
 
-        cy.contains('Ausgabe').click()
+        cy.get(firstTab).contains('Ausgabe').click()
 
         cy.get('.x-menu-floating').contains(report).click()
 

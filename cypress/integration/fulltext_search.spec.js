@@ -12,7 +12,7 @@ context('Fulltext search', () => {
             timeout: 120000 // it can take quite some time until the search results appear
         }).contains('Tocco AG, Support').click()
 
-        // form values
+        // form values (Cypress user has only read access. There are no input fields rendered.)
         cy.get('.firstname-value').contains('Support')
         cy.get('.lastname-value').contains('Tocco AG')
 

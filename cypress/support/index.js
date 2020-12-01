@@ -16,5 +16,5 @@
 import './commands'
 
 Cypress.Cookies.defaults({
-    whitelist: 'nice_auth'
+    preserve: 'nice_auth'
 })
